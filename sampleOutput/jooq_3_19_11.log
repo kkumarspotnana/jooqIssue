@@ -1,0 +1,79 @@
+running run_text
+Query triggered : select * from testTableQuery result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   1|testValue   |testValue|testValue  |
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+Query triggered : select "public"."testtable"."id", "public"."testtable"."name_varchar", "public"."testtable"."name_text", "public"."testtable"."name_citext" from testTable where "public"."testtable"."name_text" like (('%' || replace(replace(replace(?, '!', '!!'), '%', '!%'), '_', '!_')) || '%') escape '!'Query result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+Query triggered : select "public"."testtable"."id", "public"."testtable"."name_varchar", "public"."testtable"."name_text", "public"."testtable"."name_citext" from testTable where "public"."testtable"."name_text" ilike (('%' || replace(replace(replace(?, '!', '!!'), '%', '!%'), '_', '!_')) || '%') escape '!'Query result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   1|testValue   |testValue|testValue  |
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+running run_text completed
+
+running run_citext
+Query triggered : select * from testTableQuery result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   1|testValue   |testValue|testValue  |
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+Query triggered : select "public"."testtable"."id", "public"."testtable"."name_varchar", "public"."testtable"."name_text", "public"."testtable"."name_citext" from testTable where "public"."testtable"."name_citext" like (('%' || cast(? as citext)) || '%') escape '!'Query result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   1|testValue   |testValue|testValue  |
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+Query triggered : select "public"."testtable"."id", "public"."testtable"."name_varchar", "public"."testtable"."name_text", "public"."testtable"."name_citext" from testTable where "public"."testtable"."name_citext" ilike (('%' || cast(? as citext)) || '%') escape '!'Query result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   1|testValue   |testValue|testValue  |
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+running run_citext completed
+
+running run_varchar
+Query triggered : select * from testTableQuery result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   1|testValue   |testValue|testValue  |
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+Query triggered : select "public"."testtable"."id", "public"."testtable"."name_varchar", "public"."testtable"."name_text", "public"."testtable"."name_citext" from testTable where "public"."testtable"."name_varchar" like (('%' || replace(replace(replace(?, '!', '!!'), '%', '!%'), '_', '!_')) || '%') escape '!'Query result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+Query triggered : select "public"."testtable"."id", "public"."testtable"."name_varchar", "public"."testtable"."name_text", "public"."testtable"."name_citext" from testTable where "public"."testtable"."name_varchar" ilike (('%' || replace(replace(replace(?, '!', '!!'), '%', '!%'), '_', '!_')) || '%') escape '!'Query result : 
++----+------------+---------+-----------+
+|  id|name_varchar|name_text|name_citext|
++----+------------+---------+-----------+
+|   1|testValue   |testValue|testValue  |
+|   2|testvalue   |testvalue|testvalue  |
++----+------------+---------+-----------+
+
+running run_varchar completed
+

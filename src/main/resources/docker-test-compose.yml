@@ -1,0 +1,19 @@
+version: '3'
+services:
+  postgres:
+    # Postgres version should be compatible with Aurora:
+    # https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.20180305.html
+    image: public.ecr.aws/docker/library/postgres:17.2
+    hostname: postgres
+    ports:
+      - "7777:7777"
+    command: -p 7777
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+volumes:
+  postgres-data:
