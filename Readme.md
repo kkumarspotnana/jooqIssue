@@ -11,11 +11,11 @@ This project demonstrates the usage of jOOQ with different PostgreSQL data types
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone https://github.com/kkumarspotnana/jooq-conversion-issue.git
+    git clone https://github.com/kkumarspotnana/jooqIssue.git
     ```
 2. Navigate to the project directory:
     ```sh
-    cd jooq-conversion-issue
+    cd jooqIssue
     ```
 3. Run ``docker-test-compose.yml`` file in ``src/main/resources`` to bring up a docker DB instance. 
    You may check the port configuration in the file. This will be required for jooq codegen config defined in ``pom.xml``
